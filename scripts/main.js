@@ -65,6 +65,11 @@ document.getElementById('search-btn').onclick = () => {
     if (values.length === 0) {
         resultsDiv.textContent = 'Nenhum valor encontrado para esta chave.';
     } else {
-        resultsDiv.innerHTML = '<b>Resultados:</b> ' + values.map(v => `<p>${v.name} [HP: ${v.hp}, DEF: ${v.def}, ATK: ${v.atk}]</p>`).join('');
+        resultsDiv.innerHTML = '<b>Resultados:</b> ' + values.map(v => {
+            if (typeof v !== 'object') {
+                return `<p>${v}</p>`;
+            } 
+            return `<p>${v.name} [HP: ${v.hp}, DEF: ${v.def}, ATK: ${v.atk}]</p>`;
+        }).join('');
     }
 }
