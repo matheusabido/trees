@@ -34,3 +34,37 @@ function render() {
     requestAnimationFrame(render);
 }
 requestAnimationFrame(render);
+
+// Função para buscar node por key
+function findNodeByKey(node, key) {
+    if (!node) return null;
+    if (node.key === key) return node;
+    if (key < node.key) return findNodeByKey(node.left, key);
+    return findNodeByKey(node.right, key);
+}
+
+document.getElementById('search-btn').onclick = () => {
+    const key = Number(document.getElementById('search-key').value);
+    const resultsDiv = document.getElementById('search-results');
+    resultsDiv.innerHTML = '';
+    if (isNaN(key)) {
+        resultsDiv.textContent = 'Digite uma chave válida.';
+        return;
+    }
+    const node = findNodeByKey(tree.root, key);
+    if (!node) {
+        resultsDiv.textContent = 'Nenhum resultado encontrado.';
+        return;
+    }
+    let current = node.value?.head;
+    const values = [];
+    while (current) {
+        values.push(current.value);
+        current = current.next;
+    }
+    if (values.length === 0) {
+        resultsDiv.textContent = 'Nenhum valor encontrado para esta chave.';
+    } else {
+        resultsDiv.innerHTML = '<b>Resultados:</b> ' + values.map(v => `<p>${v.name} [HP: ${v.hp}, DEF: ${v.def}, ATK: ${v.atk}]</p>`).join('');
+    }
+}

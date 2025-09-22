@@ -22,9 +22,19 @@
         <div class="canvas-container">
             <canvas id="canvas"></canvas>
         </div>
-        <button id="btn-hp" class="controls-btn">Indexar por HP</button>
-        <button id="btn-atk" class="controls-btn">Indexar por Ataque</button>
-        <button id="btn-def" class="controls-btn">Indexar por Defesa</button>
+        <div>
+            <button id="btn-hp" class="controls-btn">Indexar por HP</button>
+            <button id="btn-atk" class="controls-btn">Indexar por Ataque</button>
+            <button id="btn-def" class="controls-btn">Indexar por Defesa</button>
+        </div>
+        <div class="search-group">
+            <div class="input-group">
+                <label for="search-key">Pesquisar chave</label>
+                <input type="number" id="search-key">
+            </div>
+            <button id="search-btn" class="controls-btn">Buscar</button>
+        </div>
+        <div id="search-results" class="results-container"></div>
     </div>
     <script src="./scripts/main.js" type="module"></script>
 </body>
