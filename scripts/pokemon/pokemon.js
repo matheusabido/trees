@@ -16,12 +16,16 @@ export async function loadPokemonList() {
     const count = Number(lines[0]);
     const pokemons = [];
     for (let i = 1; i <= count && i < lines.length; i++) {
-        const [name, hp, atk, def] = lines[i].split(/\s+/);
+        const sp = lines[i].split(' ');
+        let name = [];
+        for (let i = 0; i < sp.length - 3; i++) {
+            name.push(sp[i]);
+        }
         pokemons.push({
-            name,
-            hp: Number(hp),
-            atk: Number(atk),
-            def: Number(def)
+            name: name.join(' '),
+            hp: Number(sp[sp.length - 3]),
+            atk: Number(sp[sp.length - 2]),
+            def: Number(sp[sp.length - 1])
         });
     }
     return pokemons;

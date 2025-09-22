@@ -30,7 +30,7 @@ document.getElementById('btn-def').onclick = async () => {
 
 function render() {
     context.clearRect(0, 0, canvas.width, canvas.height);
-    drawTree(context, tree.root, undefined, undefined, canvas.width / 6);
+    drawTree(context, tree);
     requestAnimationFrame(render);
 }
 requestAnimationFrame(render);

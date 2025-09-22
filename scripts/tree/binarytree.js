@@ -11,6 +11,18 @@ export class BinaryTree {
     }
 
     /**
+     * Calcula a altura máxima da árvore
+     * @returns {number}
+     */
+    getHeight() {
+        function height(node) {
+            if (!node) return 0;
+            return 1 + Math.max(height(node.left), height(node.right));
+        }
+        return height(this.root);
+    }
+
+    /**
      * @param {number} key
      * @param {any} value
      * @returns {BinaryNode} - parent
